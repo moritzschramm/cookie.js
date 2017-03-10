@@ -1,1 +1,41 @@
-function setCookie(e,t,o) {var n=new Date;n.setTime(n.getTime()+24*o*60*60*1e3);var i="expires="+n.toUTCString();document.cookie=e+"="+t+"; "+i+"; path=/"} function getCookie(e){for(var t=e+"=",o=document.cookie.split(";"),n=0;n<o.length;n++) {for(var i=o[n];" "==i.charAt(0);)i=i.substring(1);if(0==i.indexOf(t))return i.substring(t.length,i.length)}return""} function checkCookie(e){var t=getCookie(e);return""!=t}
+/**
+  TODO: IMPLEMENT DELETE METHOD
+*/
+
+function setCookie(key, value, expires) {
+
+  var expireDate = new Date;
+  expireDate.setTime(expireDate.getTime() + 24 * expires * 60 * 60 * 1000);
+
+  expires = "expires=" + expireDate.toUTCString();
+
+  document.cookie = key + "=" + value + "; " + expires + "; path=/";
+}
+
+function getCookie(key) {
+
+  key = key + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var cookie = decodedCookie.split(";");
+
+  for(var i = 0; i < cookie.length; i++) {
+
+    var c = cookie[i];
+
+    while(c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+
+    if (c.indexOf(key) == 0) {
+      return c.substring(key.length, c.length);
+    }
+  }
+
+  return "";
+}
+
+function checkCookie(key) {
+
+  var value = getCookie(key);
+  return "" != value;
+}
