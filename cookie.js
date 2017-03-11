@@ -1,6 +1,3 @@
-/**
-  TODO: IMPLEMENT DELETE METHOD
-*/
 
 function setCookie(key, value, expires) {
 
@@ -38,4 +35,17 @@ function checkCookie(key) {
 
   var value = getCookie(key);
   return "" != value;
+}
+
+function deleteCookie(key) {
+
+  if(checkCookie(key)) {
+
+    setCookie(key, "", -1);
+    return true;
+
+  } else {
+
+    return false;
+  }
 }
